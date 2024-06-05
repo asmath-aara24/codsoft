@@ -1,0 +1,150 @@
+python code:
+import random
+
+# List of jokes
+jokes = [
+    "Why don't scientists trust atoms? Because they make up everything!",
+    "Why did the scarecrow win an award? Because he was outstanding in his field!",
+    "Why don't skeletons fight each other? They don't have the guts.",
+    "What do you call fake spaghetti? An impasta!",
+    "Why did the bicycle fall over? Because it was two-tired!",
+    "Why don't programmers like nature? It has too many bugs.",
+    "What do you get when you cross a snowman and a vampire? Frostbite.",
+    "Why was the math book sad? Because it had too many problems.",
+    "What do you call cheese that isn't yours? Nacho cheese!",
+    "Why did the golfer bring extra pants? In case he got a hole in one!"
+]
+
+# List of motivational quotes
+quotes = [
+    "The only way to do great work is to love what you do. - Steve Jobs",
+    "The best time to plant a tree was 20 years ago. The second best time is now. - Chinese Proverb",
+    "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
+    "Not everything that is faced can be changed, but nothing can be changed until it is faced. - James Baldwin",
+    "The best revenge is massive success. - Frank Sinatra",
+    "I have not failed. I've just found 10,000 ways that won't work. - Thomas A. Edison",
+    "Believe you can and you're halfway there. - Theodore Roosevelt",
+    "The only limit to our realization of tomorrow is our doubts of today. - Franklin D. Roosevelt",
+    "You miss 100% of the shots you don't take. - Wayne Gretzky",
+    "The only way to achieve the impossible is to believe it is possible. - Charles Kingsleigh",
+    "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+    "Keep your eyes on the stars and your feet on the ground. - Theodore Roosevelt",
+    "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+    "The best way to predict the future is to create it. - Peter Drucker",
+    "The secret of getting ahead is getting started. - Mark Twain",
+    "It does not matter how slowly you go as long as you do not stop. - Confucius",
+    "The only person you are destined to become is the person you decide to be. - Ralph Waldo Emerson",
+    "Go confidently in the direction of your dreams. Live the life you have imagined. - Henry David Thoreau",
+    "Success is not the key to happiness. Happiness is the key to success. - Albert Schweitzer",
+    "Hardships often prepare ordinary people for an extraordinary destiny. - C.S. Lewis"
+]
+
+# Ways to improve English
+improve_english = [
+    "Read English books, newspapers, and articles.",
+    "Watch English movies and TV shows.",
+    "Practice speaking with native speakers or friends.",
+    "Use language learning apps like Duolingo or Babbel.",
+    "Listen to English podcasts and music.",
+    "Write essays, journals, or short stories in English.",
+    "Join English language classes or online courses.",
+    "Expand your vocabulary by learning new words daily.",
+    "Practice grammar exercises regularly.",
+    "Engage in online forums or social media in English."
+]
+
+# Detailed steps to learn programming
+learn_programming = [
+    "1. Choose a programming language to start with (e.g., Python, JavaScript).",
+    "2. Find online tutorials or courses (e.g., Codecademy, Coursera, freeCodeCamp).",
+    "3. Set up your development environment (e.g., install Python, a code editor).",
+    "4. Start with basic concepts like variables, loops, and conditionals.",
+    "5. Practice by writing simple programs and solving coding challenges.",
+    "6. Learn about data structures and algorithms.",
+    "7. Build small projects to apply your knowledge (e.g., a to-do list app).",
+    "8. Explore advanced topics like object-oriented programming and databases.",
+    "9. Contribute to open-source projects or collaborate with others.",
+    "10. Keep learning and stay updated with the latest trends and technologies."
+]
+
+# Tips to stay fit
+stay_fit = [
+    "Engage in regular physical activity (e.g., walking, running, cycling).",
+    "Eat a balanced diet rich in fruits, vegetables, and lean proteins.",
+    "Stay hydrated by drinking plenty of water.",
+    "Get enough sleep (7-8 hours per night).",
+    "Practice stress management techniques (e.g., meditation, yoga).",
+    "Avoid smoking and limit alcohol consumption.",
+    "Maintain a healthy weight through proper diet and exercise.",
+    "Take breaks and avoid sitting for long periods.",
+    "Track your fitness progress and set achievable goals.",
+    "Stay motivated by finding activities you enjoy."
+]
+
+# Proper weekly fitness routine
+weekly_fitness_routine = [
+    "Monday: Cardio (30-45 minutes of running, cycling, or swimming)",
+    "Tuesday: Strength training (focus on upper body)",
+    "Wednesday: Yoga or Pilates (flexibility and core strength)",
+    "Thursday: Cardio (30-45 minutes of running, cycling, or HIIT)",
+    "Friday: Strength training (focus on lower body)",
+    "Saturday: Active rest (light activity like walking or stretching)",
+    "Sunday: Rest and recovery"
+]
+
+# Track the last joke told to avoid repetition
+last_joke_index = -1
+
+def get_response(user_input):
+    global last_joke_index
+
+    user_input = user_input.lower()
+
+    if user_input in ['hey', 'hello', 'hi']:
+        return "Hello! How can I assist you today?"
+    
+    if user_input in ['how are you', 'how are you?']:
+        return "I'm just a bunch of code, but thanks for asking! How can I help you?"
+
+    if 'another joke' in user_input:
+        new_joke_index = random.randint(0, len(jokes) - 1)
+        while new_joke_index == last_joke_index:
+            new_joke_index = random.randint(0, len(jokes) - 1)
+        last_joke_index = new_joke_index
+        return jokes[new_joke_index]
+
+    if 'joke' in user_input:
+        new_joke_index = random.randint(0, len(jokes) - 1)
+        last_joke_index = new_joke_index
+        return jokes[new_joke_index]
+
+    if 'quote' in user_input:
+        return random.choice(quotes)
+
+    if 'improve english' in user_input:
+        return random.choice(improve_english)
+
+    if 'learn programming' in user_input:
+        return "\n".join(learn_programming)
+
+    if 'stay fit' in user_input:
+        return random.choice(stay_fit)
+
+    if 'fitness routine' in user_input:
+        return "\n".join(weekly_fitness_routine)
+
+    return "I'm sorry, I don't understand that. You can ask for a joke, a quote, ways to improve English, steps to learn programming, tips to stay fit, or a weekly fitness routine."
+
+def main():
+    print("Hello! I'm your friendly chatbot. You can ask me for a joke, a motivational quote, ways to improve English, steps to learn programming, tips to stay fit, or a weekly fitness routine. Type 'another joke' to hear a different joke.")
+
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() in ['exit', 'quit', 'bye']:
+            print("Chatbot: Goodbye! Have a great day!")
+            break
+        response = get_response(user_input)
+        print(f"Chatbot: {response}")
+
+if __name__ == "__main__":
+    main()
